@@ -39,16 +39,10 @@ namespace WhatsApp.DataBase
                 .HasKey(m => m.MessageID);
 
             modelBuilder.Entity<Message>()
-                .HasOne(m => m.Sender)
-                .WithMany(u => u.MessagesSent)
-                .HasForeignKey(m => m.SenderID)
-                .OnDelete(DeleteBehavior.NoAction);
+                .HasOne(m => m.Sender);
 
             modelBuilder.Entity<Message>()
-                .HasOne(m => m.Receiver)
-                .WithMany(u => u.MessagesReceived)
-                .HasForeignKey(m => m.ReceiverID)
-                .OnDelete(DeleteBehavior.NoAction);
+                .HasOne(m => m.Receiver);
 
             base.OnModelCreating(modelBuilder);
         }
